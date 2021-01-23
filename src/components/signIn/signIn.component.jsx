@@ -1,58 +1,47 @@
-import React, { Component } from "react";
 import "./signIn.styles.scss";
 
+// custom components
 import FormInput from "../formInput/formInput.component";
 import CustomButton from "../CustomButton/customButton.component";
-
 import { withRouter } from "react-router-dom";
 
-class SignIN extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setInputField } from "../../redux/form/actions";
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-
-    this.setState({ [name]: value });
+const SignIN = () => {
+  const { email, password } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const handleChange = (event) => {
+    dispatch(setInputField(event));
   };
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-  };
+  return (
+    <div className="sign-in-form-container">
+      <div className="sign-in">
+        <h1>Sign in with email and password</h1>
+        <form action="POST" onSubmit={(e) => e.preventDefault()}>
+          <FormInput
+            name="email"
+            type="email"
+            handleChange={handleChange}
+            value={email}
+            label="email"
+            required
+          />
+          <FormInput
+            name="password"
+            type="password"
+            handleChange={handleChange}
+            value={password}
+            label="password"
+            required
+          />
 
-  render() {
-    return (
-      <div className="sign-in-form-container">
-        <div className="sign-in">
-          <h1>Sign in with email and password</h1>
-          <form action="POST" onSubmit={this.handleSubmit}>
-            <FormInput
-              name="email"
-              type="email"
-              handleChange={this.handleChange}
-              value={this.state.email}
-              label="email"
-              required
-            />
-            <FormInput
-              name="password"
-              type="password"
-              handleChange={this.handleChange}
-              value={this.state.password}
-              label="password"
-              required
-            />
-
-            <CustomButton type="submit">Sign In</CustomButton>
-          </form>
-        </div>
+          <CustomButton type="submit">Sign In</CustomButton>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 export default withRouter(SignIN);
