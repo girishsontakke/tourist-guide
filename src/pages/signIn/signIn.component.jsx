@@ -1,8 +1,8 @@
 import "./signIn.styles.scss";
 
 // custom components
-import FormInput from "../formInput/formInput.component";
-import CustomButton from "../CustomButton/customButton.component";
+import FormInput from "../../components/formInput/formInput.component";
+import CustomButton from "../../components/CustomButton/customButton.component";
 import { withRouter } from "react-router-dom";
 
 // redux

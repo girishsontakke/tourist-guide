@@ -1,6 +1,6 @@
 import React from "react";
-import FormInput from "../formInput/formInput.component";
-import CustomButton from "../CustomButton/customButton.component";
+import FormInput from "../../components/formInput/formInput.component";
+import CustomButton from "../../components/CustomButton/customButton.component";
 import "./signUp.styles.scss";
 
 //redux
