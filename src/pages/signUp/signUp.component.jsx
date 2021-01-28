@@ -1,62 +1,140 @@
-import React from "react";
-import FormInput from "../../components/formInput/formInput.component";
-import CustomButton from "../../components/CustomButton/customButton.component";
-import "./signUp.styles.scss";
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
-//redux
-import { useSelector, useDispatch } from "react-redux";
-import { setInputField } from "../../redux/form/actions";
+import { Link } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(5),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 const SignUp = () => {
-  const { displayName, email, password, confirmPassword } = useSelector(
-    (state) => state
-  );
-  const dispatch = useDispatch();
+  const classes = useStyles();
+  const [state, setState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState({
+      ...state,
+      [name]: value,
+    });
+  };
 
-  const handleChange = (event) => dispatch(setInputField(event));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="sign-up-form-container">
-      <div className="sign-up">
-        <h1 className="title">I do not have account</h1>
-        <span>Sign Up With Your Email And Password</span>
-        <form className="sign-up-form" onSubmit={(e) => e.preventDefault()}>
-          <FormInput
-            type="text"
-            name="displayName"
-            value={displayName}
-            handleChange={handleChange}
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign Up
+        </Typography>
+
+        <form className={classes.form} onSubmit={handleSubmit} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="username"
             label="Display Name"
-            required
+            name="username"
+            autoComplete="username"
+            onChange={handleChange}
+            value={state.username}
+            autoFocus
           />
-          <FormInput
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            label="Email Address"
             type="email"
+            id="email"
             name="email"
-            value={email}
-            handleChange={handleChange}
-            label="Email"
-            required
+            autoComplete="email"
+            onChange={handleChange}
+            value={state.email}
           />
-          <FormInput
-            type="password"
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             name="password"
-            value={password}
-            handleChange={handleChange}
             label="Password"
-            required
-          />
-          <FormInput
             type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            handleChange={handleChange}
-            label="Confirm Password"
-            required
+            id="password"
+            autoComplete="current-password"
+            onChange={handleChange}
+            value={state.password}
           />
-          <CustomButton type="submit">Sign Up</CustomButton>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirmPassword"
+            label="confirm password"
+            type="password"
+            id="confirmPassword"
+            autoComplete="current-password"
+            onChange={handleChange}
+            value={state.confirmPassword}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link to="/signup">Forgot password?</Link>
+            </Grid>
+            <Grid item>
+              <Link to="/signin">{"have an account? Sign In"}</Link>
+            </Grid>
+          </Grid>
         </form>
       </div>
-    </div>
+    </Container>
   );
 };
-
 export default SignUp;
