@@ -35,6 +35,7 @@ const useStyle = makeStyles((theme) => ({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     marginBottom: "10px",
+    paddingLeft: "30px",
   },
 }));
 
@@ -87,13 +88,21 @@ const Header = () => {
       {matches && display ? (
         <Toolbar>
           <Grid item className={classes.rightsm}>
-            <Link to="/" className={classes.link}>
+            <Link to="/" className={classes.link} style={{ width: "100vw" }}>
               <Typography component="span">Home</Typography>
             </Link>
-            <Link to="/signin" className={classes.link}>
+            <Link
+              to="/signin"
+              className={classes.link}
+              style={{ width: "100vw" }}
+            >
               <Typography component="span">SignIn</Typography>
             </Link>
-            <Link to="/signup" className={classes.link}>
+            <Link
+              to="/signup"
+              className={classes.link}
+              style={{ width: "100vw" }}
+            >
               <Typography component="span">SignUp</Typography>
             </Link>
           </Grid>
