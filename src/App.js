@@ -4,6 +4,7 @@ import Home from "./pages/home/home.component";
 import Header from "./components/header/header.component";
 import signIn from "./pages/signIn/signIn.component";
 import SignUp from "./pages/signUp/signUp.component";
+import { CssBaseline } from "@material-ui/core";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/signin" component={signIn} />
         <Route exact path="/signup" component={SignUp} />
       </Switch>
+      <CssBaseline />
     </>
   );
 }
