@@ -10,7 +10,6 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Logo from "../assets/voyage-scoutt.jpg";
 
 const Header = () => {
   const [display, setDisplay] = useState(false);
@@ -27,7 +26,11 @@ const Header = () => {
             <Grid item sm={3}>
               <Link to="/">
                 <div className={classes.logo__container}>
-                  <img src={Logo} alt="logo" className={classes.logo} />
+                  <img
+                    src={process.env.PUBLIC_URL + "/assets/voyage-scoutt.jpg"}
+                    alt="logo"
+                    className={classes.logo}
+                  />
                 </div>
               </Link>
             </Grid>
