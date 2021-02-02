@@ -1,0 +1,52 @@
+@import "./variables";
+@import "./mixins";
+
+.section-container {
+  padding: 0 15vw;
+  .section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12vh;
+
+    .left {
+      width: 50%;
+      order: -1;
+      // animation: moveleft 1.2s ease-out;
+    }
+
+    .right {
+      width: 50%;
+      order: 1;
+      // animation: moveright 1.2s ease-out;
+    }
+    @include mobile {
+      flex-direction: column;
+      .left,
+      .right {
+        width: 100%;
+        order: 0;
+      }
+    }
+  }
+}
+
+@keyframes moveleft {
+  from {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes moveright {
+  from {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

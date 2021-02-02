@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import ServiceSection from "./serviceSection.component";
-import DATA from "./services.data";
+import DATA from "../utils/services.data";
 const Services = () => {
   const classes = useStyles();
   return (

@@ -10,8 +10,10 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import HideOnScroll from "./hideOnScroll.component";
+import NavLinks from "./navlinks.component";
 
-const Header = () => {
+const Header = (props) => {
   const [display, setDisplay] = useState(false);
   const classes = useStyle();
   const matches = useMediaQuery("(max-width:600px)");
@@ -20,84 +22,74 @@ const Header = () => {
   };
   return (
     <>
-      <AppBar position="static" color="default" className={classes.header}>
-        <Toolbar>
-          <Grid container>
-            <Grid item sm={3}>
-              <Link to="/">
-                <div className={classes.logo__container}>
-                  <img
-                    src={process.env.PUBLIC_URL + "/assets/voyage-scoutt.jpg"}
-                    alt="logo"
-                    className={classes.logo}
-                  />
-                </div>
-              </Link>
-            </Grid>
-            <Grid item xs />
-            {matches ? (
-              <Grid item>
-                <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleDisplay}
-                >
-                  <MenuIcon />
-                </IconButton>
+      <HideOnScroll {...props}>
+        <AppBar color="default" className={classes.header}>
+          <Toolbar>
+            <Grid container>
+              <Grid item sm={3}>
+                <Link to="/">
+                  <div className={classes.logo__container}>
+                    <img
+                      src={process.env.PUBLIC_URL + "/assets/voyage-scoutt.jpg"}
+                      alt="logo"
+                      className={classes.logo}
+                    />
+                  </div>
+                </Link>
               </Grid>
-            ) : (
-              <Grid item className={classes.right} sm={8}>
-                <Link to="/" className={classes.link}>
+              <Grid item xs />
+              {matches ? (
+                <Grid item>
+                  <IconButton
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={handleDisplay}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Grid>
+              ) : (
+                <NavLinks />
+              )}
+            </Grid>
+          </Toolbar>
+          {matches && display ? (
+            <Toolbar>
+              <Grid item className={classes.rightsm}>
+                <Link
+                  to="/"
+                  className={classes.link}
+                  style={{ width: "100vw" }}
+                >
                   <Typography component="h6" variant="h6">
                     Home
                   </Typography>
                 </Link>
-                <Link to="/signin" className={classes.link}>
+                <Link
+                  to="/signin"
+                  className={classes.link}
+                  style={{ width: "100vw" }}
+                >
                   <Typography component="h6" variant="h6">
                     SignIn
                   </Typography>
                 </Link>
-                <Link to="/signup" className={classes.link}>
+                <Link
+                  to="/signup"
+                  className={classes.link}
+                  style={{ width: "100vw" }}
+                >
                   <Typography component="h6" variant="h6">
                     SignUp
                   </Typography>
                 </Link>
               </Grid>
-            )}
-          </Grid>
-        </Toolbar>
-        {matches && display ? (
-          <Toolbar>
-            <Grid item className={classes.rightsm}>
-              <Link to="/" className={classes.link} style={{ width: "100vw" }}>
-                <Typography component="h6" variant="h6">
-                  Home
-                </Typography>
-              </Link>
-              <Link
-                to="/signin"
-                className={classes.link}
-                style={{ width: "100vw" }}
-              >
-                <Typography component="h6" variant="h6">
-                  SignIn
-                </Typography>
-              </Link>
-              <Link
-                to="/signup"
-                className={classes.link}
-                style={{ width: "100vw" }}
-              >
-                <Typography component="h6" variant="h6">
-                  SignUp
-                </Typography>
-              </Link>
-            </Grid>
-          </Toolbar>
-        ) : null}
-      </AppBar>
+            </Toolbar>
+          ) : null}
+        </AppBar>
+      </HideOnScroll>
     </>
   );
 };
@@ -125,19 +117,6 @@ const useStyle = makeStyles((theme) => ({
     maxWidth: "100%",
     maxHeight: "100%",
     fontSize: "14px",
-  },
-  link: {
-    transition: "transform ease-in-out",
-    marginRight: "20px",
-    "&:hover": {
-      transform: "scale(1.02)",
-      color: "black",
-    },
-  },
-  right: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
   },
   rightsm: {
     display: "flex",

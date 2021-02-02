@@ -1,19 +1,19 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import "../styles/serviceSection.styles.scss";
 
 const ServiceSection = ({ DATA }) => {
   const classes = useStyles();
   return (
-    <div>
-      <Grid container>
-        <Grid item sm={2} />
-        <Grid item sm={4} xs={12}>
+    <div className="section-container">
+      <div className="section">
+        <div className={DATA.id % 2 === 0 ? "right" : "left"}>
           <img src={DATA.imageUrl} alt="logo" className={classes.svg} />
-        </Grid>
-        <Grid item sm={4} xs={12}>
+        </div>
+        <div className={DATA.id % 2 === 0 ? "left" : "right"}>
           <h6 className={classes.subheading}>{DATA.heading}</h6>
           <p className={classes.description}>{DATA.content}</p>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 };

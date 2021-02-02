@@ -1,5 +1,4 @@
 import { Grid, makeStyles } from "@material-ui/core";
-import image from "../assets/img1.png";
 
 const useStyle = makeStyles({
   main_image: {
@@ -16,7 +15,7 @@ const MainImage = () => {
         <Grid item xs={1} />
         <Grid item xs={10} className={classes.main_image}>
           <img
-            src={image}
+            src={require("../assets/img1.png").default}
             alt="main"
             style={{ maxWidth: "100%", objectFit: "contain" }}
           />
