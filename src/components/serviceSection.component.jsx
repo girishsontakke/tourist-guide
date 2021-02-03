@@ -7,7 +7,11 @@ const ServiceSection = ({ DATA }) => {
     <div className="section-container">
       <div className="section">
         <div className={DATA.id % 2 === 0 ? "right" : "left"}>
-          <img src={DATA.imageUrl} alt="logo" className={classes.svg} />
+          <img
+            src={process.env.PUBLIC_URL + DATA.imageUrl}
+            alt="logo"
+            className={classes.svg}
+          />
         </div>
         <div className={DATA.id % 2 === 0 ? "left" : "right"}>
           <h6 className={classes.subheading}>{DATA.heading}</h6>
@@ -35,5 +39,7 @@ const useStyles = makeStyles({
     fontFamily: "Roboto, sans-serif",
     fontSize: "1.2rem",
     padding: "5px 10px",
+    overflow: "hidden",
+    maxHeight: "300px",
   },
 });

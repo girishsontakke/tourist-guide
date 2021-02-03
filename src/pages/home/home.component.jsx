@@ -1,7 +1,9 @@
 import Services from "../../components/services.component";
+import Hero from "../../components/hero.component";
 const Home = () => {
   return (
-    <div>
+    <div className="home">
+      <Hero />
       <Services />
     </div>
   );

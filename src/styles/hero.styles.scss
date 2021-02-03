@@ -1,0 +1,49 @@
+@import "./mixins";
+@import "./variables";
+.hero {
+  height: 92vh;
+  padding: 10vh 15vw;
+  display: flex;
+  justify-content: space-between;
+
+  #{&}__content,
+  #{&}__svg {
+    width: 50%;
+    max-height: 100%;
+    overflow: hidden;
+  }
+  .hero__content {
+    padding-top: 5rem;
+    .hero__content__heading {
+      color: rgb(51, 75, 141);
+      text-align: center;
+      font-weight: 1000;
+      font-family: "system-ui";
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero__content__description {
+      font-family: "Roboto, sans-serif";
+      font-size: 1.2rem;
+      overflow: hidden;
+      max-height: 90%;
+    }
+  }
+  @include mobile {
+    height: auto;
+    flex-direction: column;
+    padding: 0;
+    .hero__content,
+    .hero__svg {
+      padding: 1rem 15vw;
+      width: 100%;
+      max-height: 100vh;
+    }
+    .hero__content {
+      .hero__content__heading {
+        text-align: center;
+        font-size: 2rem;
+      }
+    }
+  }
+}
