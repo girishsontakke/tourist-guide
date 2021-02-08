@@ -12,7 +12,8 @@ const DATA = [
     id: 2,
     name: "",
     identity: "",
-    feedback: "",
+    feedback:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ad assumenda et rem accusantium veritatis pariatur molestias ipsum,",
     imageUrl: "",
   },
   {
@@ -28,7 +29,8 @@ const DATA = [
     id: 4,
     name: "",
     identity: "",
-    feedback: "",
+    feedback:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ad assumenda et rem accusantium veritatis pariatur molestias ipsum,",
     imageUrl: "",
   },
 ];

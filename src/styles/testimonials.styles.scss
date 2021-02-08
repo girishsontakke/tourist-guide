@@ -26,7 +26,7 @@
         @include flexCenter();
         flex-direction: column;
         justify-content: flex-start;
-        width: 300px;
+        max-width: 300px;
         height: 400px;
         padding: 10px 20px;
         margin: 0 10px;
