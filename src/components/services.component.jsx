@@ -4,7 +4,7 @@ import DATA from "../data/services.data";
 const Services = () => {
   const classes = useStyles();
   return (
-    <section>
+    <section id="services">
       <h2 className={classes.heading}> OUR SERVICES </h2>
       {DATA.map((data) => (
         <ServiceSection key={data.id} DATA={data} />

@@ -4,22 +4,22 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { IconButton, useMediaQuery } from "@material-ui/core";
 import { useState } from "react";
-import DATA from "../data/testimonial.data";
+import data from "../data/testimonial.data";
 
 const Testimonial = () => {
-  const query = useMediaQuery("(max-width:1000px)");
-  const [currentItemId, setCurrentItemId] = useState(2);
+  const query = useMediaQuery("(min-width:1050px)");
+  const [currentItemId, setCurrentItemId] = useState(1);
 
   const handlePrevious = (e) => {
-    if (currentItemId === 2) {
-      setCurrentItemId(DATA.length - 1);
+    if (currentItemId === 1) {
+      setCurrentItemId(data.length - 2);
       return;
     }
     setCurrentItemId((prevItemId) => prevItemId - 1);
   };
   const handleNext = (e) => {
-    if (currentItemId === DATA.length - 1) {
-      setCurrentItemId(2);
+    if (currentItemId === data.length - 2) {
+      setCurrentItemId(1);
       return;
     }
     setCurrentItemId((prevItemId) => prevItemId + 1);
@@ -33,13 +33,12 @@ const Testimonial = () => {
           <ChevronLeftIcon />
         </IconButton>
         <div className="testimonial__card__container">
-          {DATA.map((data, index) =>
-            (!query &&
-              index + 1 >= currentItemId - 1 &&
-              index + 1 <= currentItemId + 1) ||
-            currentItemId === index ? (
-              <TestimonialCard key={data.id} item={{ ...data }} />
-            ) : null
+          <TestimonialCard item={{ ...data[currentItemId - 1] }} />
+          {query && (
+            <>
+              <TestimonialCard item={{ ...data[currentItemId] }} />
+              <TestimonialCard item={{ ...data[currentItemId + 1] }} />{" "}
+            </>
           )}
         </div>
         <IconButton color="primary" onClick={handleNext}>
