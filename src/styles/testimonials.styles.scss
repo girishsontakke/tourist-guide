@@ -1,0 +1,76 @@
+@import "./mixins";
+@import "./variables";
+
+.testimonials {
+  padding: 0 15vw;
+  text-align: center;
+
+  .testimonials__heading {
+    margin-bottom: 50px;
+    color: rgb(42, 20, 23);
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: "Roboto";
+  }
+
+  .testimonials__cover {
+    @include flexCenter();
+    justify-content: space-between;
+
+    .testimonial__card__container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .testimonial__card {
+        @include flexCenter();
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 300px;
+        height: 400px;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: 0.5px solid rgb(211, 205, 205);
+        border-radius: 5px;
+        box-shadow: 5px 8px 5px 0px rgba(204, 194, 194, 0.75);
+
+        .card__top {
+          height: 100px;
+          position: relative;
+
+          .card__image {
+            position: relative;
+            margin-top: -40px;
+            height: 80px;
+            width: 80px;
+            object-fit: cover;
+            border-radius: 50% 50%;
+            box-shadow: 5px 5px 5px 0px rgba(204, 194, 194, 0.75);
+          }
+
+          .card__intro {
+            @include flexCenter();
+            flex-direction: column;
+
+            .card__name {
+              font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+                sans-serif;
+              font-weight: 600;
+            }
+            .card__identity {
+              font-weight: 500;
+              text-transform: capitalize;
+            }
+          }
+        }
+        .card__content {
+          overflow: scroll;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  @include mobile {
+    padding: 0;
+  }
+}

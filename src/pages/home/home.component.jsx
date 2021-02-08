@@ -1,11 +1,13 @@
 import Services from "../../components/services.component";
 import Hero from "../../components/hero.component";
+import Testimonial from "../../components/testimonial.component";
 const Home = () => {
   return (
-    <div className="home">
+    <main className="home">
       <Hero />
       <Services />
-    </div>
+      <Testimonial />
+    </main>
   );
 };
 

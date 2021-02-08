@@ -4,7 +4,7 @@ import "../styles/serviceSection.styles.scss";
 const ServiceSection = ({ DATA }) => {
   const classes = useStyles();
   return (
-    <div className="section-container">
+    <article className="section-container">
       <div className="section">
         <div className={DATA.id % 2 === 0 ? "right" : "left"}>
           <img
@@ -18,7 +18,7 @@ const ServiceSection = ({ DATA }) => {
           <p className={classes.description}>{DATA.content}</p>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
